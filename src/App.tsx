@@ -1,13 +1,17 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
-import MainPage from "../src/components/MainPage";
+import Settings from "./components/Settings";
+import MainPage from "./components/MainPage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/mainpage" element={<MainPage />} />
+        <Route path="/" element={<Login/>} />
+        <Route path="/Settings" element={<Settings />} />
+        <Route path="/MainPage" element={<MainPage />} />
+
       </Routes>
     </Router>
   );
