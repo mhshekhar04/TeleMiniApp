@@ -1,5 +1,9 @@
 import { useState, } from "react";
 import { useNavigate } from "react-router-dom";
+import Cloud1 from "../assets/Cloud1.svg";
+import Shadow from "../assets/shadow.svg";
+import Cloud2 from "../assets/Cloud2.svg";
+import Cloud3 from "../assets/Cloud3.svg";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -20,21 +24,6 @@ export default function LoginPage() {
   
   
 
-  if (isLoggedIn) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          fontFamily: "Inter, sans-serif",
-        }}
-      >
-        <h1>Welcome to the Dashboard</h1>
-      </div>
-    );
-  }
 
   return (
     
@@ -79,64 +68,59 @@ export default function LoginPage() {
           }}
         >
           {/* Cloud1 */}
-          <img
-            src="./src/assets/Cloud1.svg"
-            alt="Cloud1"
-            style={{
-              width: "100%",
-              height: "152.418px",
-              position: "absolute",
-              top: "20px", // Adjust position as needed
-              left: "50%",
-              transform: "translateX(-50%)",
-              fill: "#F5F5F5",
-            }}
-          />
+  <img
+    src={Cloud1}
+    alt="Cloud1"
+    style={{
+      width: "262.731px", // Adjusted the width
+      height: "152.418px",
+      position: "absolute",
+      top: "20px",
+      left: "50%",
+      transform: "translateX(-50%)",
+    }}
+  />
 
-          {/* Shadow */}
-          <img
-            src="./src/assets/shadow.svg"
-            alt="Shadow"
-            style={{
-              width: "138.098px",
-              height: "18.678px",
-              position: "absolute",
-              top: "210px", // Adjust position to align with Cloud1
-              left: "50%",
-              transform: "translateX(-50%)",
-              fill: "#45413C",
-              opacity: 1,
-            }}
-          />
+  {/* Shadow */}
+  <img
+    src={Shadow}
+    alt="Shadow"
+    style={{
+      width: "168.098px", // Adjusted the width
+      height: "18.678px",
+      position: "absolute",
+      top: "180px", // Adjusted position for alignment
+      left: "50%",
+      transform: "translateX(-50%)",
+      opacity: 0.15,
+    }}
+  />
 
-          {/* Cloud2 */}
-          <img
-            src="./src/assets/Cloud2.svg"
-            alt="Cloud2"
-            style={{
-              width: "41.091px",
-              height: "40.468px",
-              position: "absolute",
-              top: "150px", // Adjust position as needed
-              left: "24%",
-            }}
-          />
+  {/* Cloud2 */}
+  <img
+    src={Cloud2}
+    alt="Cloud2"
+    style={{
+      width: "41.091px",
+      height: "40.468px",
+      position: "absolute",
+      top: "150px", // Adjusted position
+      left: "20%",
+    }}
+  />
 
-          {/* Cloud3 */}
-          <img
-            src="./src/assets/Cloud3.svg"
-            alt="Cloud3"
-            style={{
-              width: "17.432px",
-              height: "17.432px",
-              position: "absolute",
-              top: "190px", // Adjust position as needed
-              left: "22%",
-              fill: "#F5F5F5",
-              stroke: "#45413C",
-              strokeWidth: "1px",
-            }}
-          />
+  {/* Cloud3 */}
+  <img
+    src={Cloud3}
+    alt="Cloud3"
+    style={{
+      width: "17.432px",
+      height: "17.432px",
+      position: "absolute",
+      top: "190px", // Adjusted position
+      left: "17%",
+    }}
+  />
         </div>
 
 
