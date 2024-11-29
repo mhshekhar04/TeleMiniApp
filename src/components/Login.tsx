@@ -1,5 +1,5 @@
 import { useState, } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cloud1 from "../assets/Cloud1.svg";
 import Shadow from "../assets/shadow.svg";
 import Cloud2 from "../assets/Cloud2.svg";
@@ -238,7 +238,7 @@ export default function LoginPage() {
 
       {/* Signup Link */}
       <a
-        href="#signup"
+        onClick={() => navigate("/Signup")}
         style={{
           color: "rgba(48, 95, 217, 0.87)",
           fontSize: "14px",

@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./MainPage.css";
 import { FaHome, FaCalendarAlt, FaCog } from "react-icons/fa";
-
+import { useActiveWallet } from "thirdweb/react";
+import { useActiveAccount } from "thirdweb/react";
+import { shortenAddress } from "thirdweb/utils";
 export default function MainPage() {
+  const account = useActiveAccount();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const wallet = useActiveWallet();
 
   const validateLogin = () => {
     if (email === "test@gmail.com" && password === "test") {
@@ -48,8 +53,10 @@ export default function MainPage() {
       <div className="header-section">
       <div className="user-info">
   <div className="user-details">
-    <p className="user-id">34frtgyuihgfh...</p>
-    <h3 className="user-name">Ellen Halen</h3>
+<p className="user-id">
+  {account?.address ? shortenAddress(account.address) : "Connect your wallet"}
+</p>  
+  <h3 className="user-name">Ellen Halen</h3>
   </div>
   <button className="add-button">+</button>
 </div>

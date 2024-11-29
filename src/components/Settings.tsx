@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { createThirdwebClient } from "thirdweb";
 import { ConnectButton } from "thirdweb/react";
+import { darkTheme } from "thirdweb/react";
 import { createWallet } from "thirdweb/wallets";
-import { FaUserFriends, FaCalendarAlt, FaUserPlus } from "react-icons/fa";
+import { FaHome, FaCalendarAlt, FaCog } from "react-icons/fa";
+import profileImage from "../assets/profile.svg";
 import "./Settings.css";
+import { useActiveWallet , useActiveAccount } from "thirdweb/react";
+import { shortenAddress } from "thirdweb/utils";
 
-// Create the thirdweb client
+
 const client = createThirdwebClient({
-  clientId: "YOUR_CLIENT_ID", // Replace with your actual Thirdweb client ID
+  clientId: "c01e9878d45ba0f45abaf91b999e034f", // Replace with your Thirdweb client ID
 });
 
-// Define supported wallets
 const wallets = [
   createWallet("io.metamask"),
   createWallet("com.coinbase.wallet"),
@@ -20,56 +24,33 @@ const wallets = [
 ];
 
 export default function Settings() {
-  const [connectedAddress, setConnectedAddress] = useState<string | null>(null);
-
-  // Handle wallet connection
-  const handleConnect = (address: string) => {
-    setConnectedAddress(address);
-  };
-
-  // Handle wallet disconnection
-  const handleDisconnect = () => {
-    setConnectedAddress(null);
-  };
+  const navigate = useNavigate();
+  const wallet = useActiveWallet();
+  const account = useActiveAccount();
 
   return (
     <div className="settings-page">
       {/* Header Section */}
       <div className="header-section">
         <div className="profile-section">
-          <div className="profile-icon">
-            <img
-              src="https://via.placeholder.com/80"
-              alt="Profile"
-              className="profile-image"
-            />
-          </div>
-          <div className="profile-details">
-            <h2 className="profile-name">Ellen Halen</h2>
-            {connectedAddress ? (
-              <p className="wallet-address">
-                {connectedAddress.slice(0, 6)}...{connectedAddress.slice(-4)}
-              </p>
-            ) : (
-              <p className="wallet-address">Connect your wallet first</p>
-            )}
-          </div>
-        </div>
+          <img src={profileImage} alt="Profile" className="profile-image" />
+          <h2 className="profile-name">Ellen Halen</h2>
+          <p className="wallet-address">
+  {account ? shortenAddress(account.address) : "Connect your wallet first"}
+</p>
+      </div>
       </div>
 
-      {/* Connect Button */}
-      <div className="connect-button-container">
+      {/* Wallet Connect Section */}
+      <div className="connect-wallet-container">
         <ConnectButton
           client={client}
           wallets={wallets}
-          onConnect={({ address }) => handleConnect(address)}
-          onDisconnect={handleDisconnect}
-          connectButton={{
-            label: connectedAddress ? "Connected" : "Connect Wallet",
-          }}
+          theme={darkTheme({
+            colors: { danger: "hsl(358, 74%, 42%)" },
+          })}
           connectModal={{
             size: "compact",
-            title: "Connect Wallet",
             showThirdwebBranding: false,
           }}
         />
@@ -79,25 +60,48 @@ export default function Settings() {
       <div className="basic-settings">
         <h3 className="settings-title">Basic Settings</h3>
         <div className="settings-option">
-          <FaUserFriends className="settings-icon" />
+          <FaHome className="settings-icon" />
           <p className="settings-text">Add Family & Friends</p>
-          <span className="settings-arrow">›</span>
         </div>
         <div className="settings-option">
           <FaCalendarAlt className="settings-icon" />
           <p className="settings-text">Add Events</p>
-          <span className="settings-arrow">›</span>
         </div>
         <div className="settings-option">
-          <FaUserPlus className="settings-icon" />
-          <p className="settings-text">Invite Friends</p>
-          <span className="settings-arrow">›</span>
+          <FaCog className="settings-icon" />
+          <p className="settings-text">Preferences</p>
+        </div>
+        <div className="settings-option">
+          <FaCog className="settings-icon" />
+          <p className="settings-text"
+            onClick={() => navigate("/")}>Logout</p>
+        
         </div>
       </div>
 
-      {/* Logout Button */}
-      <div className="logout-button-container">
-        <button className="logout-button">Logout</button>
+      {/* Footer Section */}
+      <div className="footer-nav">
+        <div
+          className="footer-item"
+          onClick={() => navigate("/MainPage")}
+        >
+          <FaHome className="footer-item-icon" />
+          <p className="footer-item-text">Home</p>
+        </div>
+        <div
+          className="footer-item"
+          onClick={() => navigate("/Events")}
+        >
+          <FaCalendarAlt className="footer-item-icon" />
+          <p className="footer-item-text">Events</p>
+        </div>
+        <div
+          className="footer-item active"
+          onClick={() => navigate("/Settings")}
+        >
+          <FaCog className="footer-item-icon" />
+          <p className="footer-item-text">Settings</p>
+        </div>
       </div>
     </div>
   );
