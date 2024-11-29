@@ -1,17 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHome, FaCalendarAlt, FaCog } from "react-icons/fa";
+import { useActiveAccount, useActiveWallet } from "thirdweb/react";
+import { shortenAddress } from "thirdweb/utils";
 import "./Events.css";
-import taskImage from "../assets/task.svg"; 
+import taskImage from "../assets/task.svg";
 
 export default function Events() {
   const navigate = useNavigate();
+  const account = useActiveAccount();
+  const wallet = useActiveWallet();
 
   const goals = [
     {
       title: "5,000 steps",
       progress: "78%",
-      image: taskImage, // Replace with actual icons or images
+      image: taskImage,
     },
     {
       title: "Eat Salad Twice",
@@ -23,6 +27,22 @@ export default function Events() {
       progress: "78%",
       image: taskImage,
     },
+    {
+        title: "30 minutes Walk",
+        progress: "78%",
+        image: taskImage,
+      },
+      {
+        title: "30 minutes Walk",
+        progress: "78%",
+        image: taskImage,
+      },
+      {
+        title: "30 minutes Walk",
+        progress: "78%",
+        image: taskImage,
+      },
+      
   ];
 
   return (
@@ -31,7 +51,9 @@ export default function Events() {
       <div className="header-section">
         <div className="user-info">
           <div className="user-details">
-            <p className="user-id">34frtgyuihgfh...</p>
+            <p className="user-id">
+              {account ? shortenAddress(account.address) : "Connect your wallet"}
+            </p>
             <h3 className="user-name">Ellen Halen</h3>
           </div>
           <button className="add-button">+</button>
@@ -56,42 +78,35 @@ export default function Events() {
         </div>
 
         {goals.map((goal, index) => (
-        <div className="goal-item">
-  <div className="goal-details">
-    <img src={goal.image} alt="Goal Icon" className="goal-icon" />
-    <div className="goal-title-buttons">
-      <p className="goal-title">5,000 steps</p>
-      <div className="goal-progress">
-        <button className="approve-button">Approve</button>
-        <button className="reject-button">Reject</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+          <div className="goal-item" key={index}>
+            <div className="goal-details">
+              <img src={goal.image} alt="Goal Icon" className="goal-icon" />
+              <div className="goal-title-buttons">
+                <p className="goal-title">{goal.title}</p>
+                <div className="goal-progress">
+                  <button className="approve-button">Approve</button>
+                  <button className="reject-button">Reject</button>
+                </div>
+              </div>
+            </div>
+            <div className="progress-circle">
+              <p>{goal.progress}</p>
+            </div>
+          </div>
         ))}
       </div>
 
       {/* Footer Navigation */}
       <div className="footer-nav">
-        <div
-          className="footer-item"
-          onClick={() => navigate("/MainPage")}
-        >
+        <div className="footer-item" onClick={() => navigate("/MainPage")}>
           <FaHome className="footer-item-icon" />
           <p className="footer-item-text">Home</p>
         </div>
-        <div
-          className="footer-item active"
-          onClick={() => navigate("/Events")}
-        >
+        <div className="footer-item active" onClick={() => navigate("/Events")}>
           <FaCalendarAlt className="footer-item-icon" />
           <p className="footer-item-text">Events</p>
         </div>
-        <div
-          className="footer-item"
-          onClick={() => navigate("/Settings")}
-        >
+        <div className="footer-item" onClick={() => navigate("/Settings")}>
           <FaCog className="footer-item-icon" />
           <p className="footer-item-text">Settings</p>
         </div>

@@ -92,7 +92,9 @@
       
       /* Highlighted Task */
       .highlight-card {
-        width: 90%;
+        max-width: 250px;
+        
+        width: 100%;
         height: 150px;
         background: linear-gradient(102deg, #11cbde -10.42%, #00256c 108.32%);
         border-radius: 20px;
@@ -106,20 +108,27 @@
       }
       
       .highlight-title {
-        font-size: 16px;
-        font-weight: 500;
+        color: #FFF;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 26px; /* 162.5% */
       }
       
       .highlight-subtitle {
-        font-size: 14px;
+        font-family: Inter;
+        font-style: normal;
+        font-size: 16px;
         font-weight: 400;
+        
       }
       
       .highlight-progress {
+        border: 3px solid #23CF8E; /* Set the border color */
         width: 50px;
         height: 50px;
-        background: #fff;
-        color: #00256c;
+        color: #FFF;
         font-size: 14px;
         font-weight: bold;
         display: flex;
@@ -133,13 +142,17 @@
       }
       
       .view-task-button {
+        color: #FFF;
+text-align: center;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 26px; /* 185.714% */
         width: 100px;
         height: 30px;
-        border-radius: 15px;
-        background: #0dcaf0;
-        color: #fff;
-        font-size: 12px;
-        font-weight: 600;
+        border-radius: 12px;
+        background: #23CF8E;;
         border: none;
         cursor: pointer;
       }
@@ -250,16 +263,23 @@ letter-spacing: -0.2px;
       }
       
       .progress-circle {
+        color: #000;
+text-align: center;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: 26px; /* 216.667% */
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background: #d9d9d9;
+        background: transparent; /* Make the circle background transparent */
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #333;
-        font-weight: bold;
+        border: 3px solid #23CF8E; /* Set the border color */
       }
+      
       
       /* Footer Navigation */
       .footer-nav {

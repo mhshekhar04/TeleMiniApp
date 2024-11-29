@@ -9,7 +9,7 @@ import profileImage from "../assets/profile.svg";
 import "./Settings.css";
 import { useActiveWallet , useActiveAccount } from "thirdweb/react";
 import { shortenAddress } from "thirdweb/utils";
-
+import { polygon } from "thirdweb/chains";
 
 const client = createThirdwebClient({
   clientId: "c01e9878d45ba0f45abaf91b999e034f", // Replace with your Thirdweb client ID
@@ -39,11 +39,15 @@ export default function Settings() {
   {account ? shortenAddress(account.address) : "Connect your wallet first"}
 </p>
       </div>
-      </div>
-
-      {/* Wallet Connect Section */}
-      <div className="connect-wallet-container">
+         {/* Wallet Connect Section */}
+         <div className="connect-wallet-container">
         <ConnectButton
+         accountAbstraction={{
+          chain: polygon,
+            sponsorGas: true
+
+
+        }}
           client={client}
           wallets={wallets}
           theme={darkTheme({
@@ -55,6 +59,9 @@ export default function Settings() {
           }}
         />
       </div>
+      </div>
+
+   
 
       {/* Basic Settings Section */}
       <div className="basic-settings">
