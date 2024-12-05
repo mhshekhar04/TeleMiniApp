@@ -70,6 +70,7 @@ export default function Events() {
         </div>
       </div>
 
+
       {/* Goals Section */}
       <div className="goals-section">
         <div className="goals-header">

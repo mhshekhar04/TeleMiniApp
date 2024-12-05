@@ -5,6 +5,16 @@ import Settings from "./components/Settings";
 import MainPage from "./components/MainPage";
 import SignUp from "./components/SignUp"
 import Events from "./components/Events";
+import Verification from "./components/Verification";
+import { Buffer } from "buffer";
+import Virtue from "./components/Virtue";
+import Regret from "./components/Regret";
+
+// Polyfill Buffer for browser
+if (!window.Buffer) {
+  window.Buffer = Buffer;
+}
+
 function App() {
   return (
     <Router>
@@ -14,7 +24,12 @@ function App() {
         <Route path="/MainPage" element={<MainPage />} />
         <Route path="/SignUp" element={<SignUp/>} />
         <Route path="/Events" element={<Events/>} />
+        <Route path="/Verification" element={<Verification/>} />
+        <Route path="/Regret" element={<Regret/>} />
+        <Route path="/Virtue" element={<Virtue/>} />
 
+
+                                                         
 
 
 

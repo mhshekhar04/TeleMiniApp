@@ -91,6 +91,7 @@
         transform: scale(1.1);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
       }
+      
 
       .card {
         flex: 0 0 90%;
@@ -108,6 +109,11 @@
         justify-content: center; /* Center content vertically */
         align-items: center; /* Center content horizontally */
         position: relative; /* For decorative designs */
+      }
+      .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
       }
       
       .card-title {
@@ -349,21 +355,17 @@ background: #FFF;
         transition: color 0.3s ease; /* Smooth transition for hover effect */
       }
 
+     
+      
       .footer-item.active {
-        color: #0056b3; /* Blue color for both text and icon */
+        background: linear-gradient(90deg, #0DCAF0 0%, #27D07D 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       
       .footer-item.active .footer-item-icon {
-        color: #0056b3; /* Ensures the icon is blue */
-      }
-      
-      
-      .footer-item:hover {
-        color: #0056b3; /* Change text color on hover */
-        transform: translateY(-3px); /* Hover lift effect */
-      }
-      
-      .footer-item:hover .footer-item-icon {
-        color: #0056b3; /* Change icon color on hover */
+        background: linear-gradient(90deg, #0DCAF0 0%, #27D07D 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       

@@ -4,6 +4,7 @@ import Cloud1 from "../assets/Cloud1.svg";
 import Shadow from "../assets/shadow.svg";
 import Cloud2 from "../assets/Cloud2.svg";
 import Cloud3 from "../assets/Cloud3.svg";
+import Video from "../assets/video.mp4";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -16,29 +17,29 @@ export default function LoginPage() {
   const validateLogin = () => {
     if (email === "test@gmail.com" && password === "test") {
       setError(""); // Clear the error message on successful login
-      navigate("/MainPage"); // Redirect to MainPage
+      navigate("/Verification"); // Redirect to MainPage
     } else {
       setError("Invalid email or password!"); // Set error message
     }
   };
-  
-  
+
+
 
 
   return (
-    
+
     <div
-    style={{
-      width: "100%",
-      minHeight: "97vh", // Ensures background color covers full height and grows with content
-      fontFamily: "Inter, sans-serif",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      background: "#f9f9f9",
-    }}
-  >
-  
+      style={{
+        width: "100%",
+        minHeight: "97vh", // Ensures background color covers full height and grows with content
+        fontFamily: "Inter, sans-serif",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        background: "#f9f9f9",
+      }}
+    >
+
       {/* Top Section with Image */}
       <div
         style={{
@@ -46,8 +47,9 @@ export default function LoginPage() {
           height: "246px",
           flexShrink: 0,
           borderRadius: "0px 0px 90px 90px",
-          background:
-            "linear-gradient(269deg, #0DCAF0 32.86%, #27D07D 85.61%), #D9D9D9",
+          // background:
+          //   "linear-gradient(269deg, #0DCAF0 32.86%, #27D07D 85.61%), #D9D9D9",
+          background: "black",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -68,59 +70,77 @@ export default function LoginPage() {
           }}
         >
           {/* Cloud1 */}
-  <img
-    src={Cloud1}
-    alt="Cloud1"
-    style={{
-      width: "262.731px", // Adjusted the width
-      height: "152.418px",
-      position: "absolute",
-      top: "20px",
-      left: "50%",
-      transform: "translateX(-50%)",
-    }}
-  />
+          <img
+            src={Cloud1}
+            alt="Cloud1"
+            style={{
+              width: "282.731px", // Adjusted the width
+              height: "172.418px",
+              position: "absolute",
+              top: "20px",
+              left: "50%",
+              transform: "translateX(-50%)",
+            }}
+          />
+          {/* Video Inside Cloud */}
+          <video
+            src={Video}
+            autoPlay
+            loop
+            muted
+            style={{
+              width: "180px", // Adjust the size to fit inside the cloud
+              height: "auto",
+              position: "absolute",
+              top: "50px", // Align with the Cloud1 position
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 1, // Ensure it is above other elements
+              borderRadius: "15px", // Optional: Rounded edges
+            }}
+          ></video>
 
-  {/* Shadow */}
-  <img
-    src={Shadow}
-    alt="Shadow"
-    style={{
-      width: "168.098px", // Adjusted the width
-      height: "18.678px",
-      position: "absolute",
-      top: "180px", // Adjusted position for alignment
-      left: "50%",
-      transform: "translateX(-50%)",
-      opacity: 0.15,
-    }}
-  />
 
-  {/* Cloud2 */}
-  <img
-    src={Cloud2}
-    alt="Cloud2"
-    style={{
-      width: "41.091px",
-      height: "40.468px",
-      position: "absolute",
-      top: "150px", // Adjusted position
-      left: "20%",
-    }}
-  />
+          {/* Shadow */}
+          <img
+            src={Shadow}
+            alt="Shadow"
+            style={{
+              width: "168.098px", // Adjusted the width
+              height: "18.678px",
+              position: "absolute",
+              top: "180px", // Adjusted position for alignment
+              left: "50%",
+              transform: "translateX(-50%)",
+              opacity: 0.15,
+            }}
+          />
 
-  {/* Cloud3 */}
-  <img
-    src={Cloud3}
-    alt="Cloud3"
-    style={{
-      width: "17.432px",
-      height: "17.432px",
-      position: "absolute",
-      top: "190px", // Adjusted position
-      left: "17%",
-    }}
-  />
+          {/* Cloud2 */}
+          <img
+            src={Cloud2}
+            alt="Cloud2"
+            style={{
+              width: "41.091px",
+              height: "40.468px",
+              position: "absolute",
+              top: "170px", // Adjusted position
+              left: "20%",
+            }}
+          />
+
+          {/* Cloud3 */}
+          <img
+            src={Cloud3}
+            alt="Cloud3"
+            style={{
+              width: "17.432px",
+              height: "17.432px",
+              position: "absolute",
+              top: "200px", // Adjusted position
+              left: "17%",
+            }}
+          />
         </div>
 
 
@@ -163,42 +183,42 @@ export default function LoginPage() {
         }}
       />
 
-    {/* Password Input */}
-<input
-  type="password"
-  placeholder="Password"
-  value={password}
-  onChange={(e) => setPassword(e.target.value)}
-  style={{
-    width: "236px",
-    height: "49px",
-    flexShrink: 0,
-    borderRadius: "12px",
-    background: "#FFF",
-    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-    color: "#797979",
-    fontSize: "14px",
-    fontWeight: 400,
-    letterSpacing: "0.14px",
-    padding: "0 15px",
-    marginBottom: "10px",
-    border: "none",
-  }}
-/>
+      {/* Password Input */}
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        style={{
+          width: "236px",
+          height: "49px",
+          flexShrink: 0,
+          borderRadius: "12px",
+          background: "#FFF",
+          boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+          color: "#797979",
+          fontSize: "14px",
+          fontWeight: 400,
+          letterSpacing: "0.14px",
+          padding: "0 15px",
+          marginBottom: "10px",
+          border: "none",
+        }}
+      />
 
-{/* Error Message */}
-{error && (
-  <p
-    style={{
-      color: "red",
-      fontSize: "12px",
-      fontWeight: "400",
-      marginBottom: "20px",
-    }}
-  >
-    {error}
-  </p>
-)}
+      {/* Error Message */}
+      {error && (
+        <p
+          style={{
+            color: "red",
+            fontSize: "12px",
+            fontWeight: "400",
+            marginBottom: "20px",
+          }}
+        >
+          {error}
+        </p>
+      )}
 
       {/* Login Button */}
       <button
@@ -217,7 +237,7 @@ export default function LoginPage() {
           border: "none",
           cursor: "pointer",
           marginBottom: "20px",
-          marginTop:"15px"
+          marginTop: "15px"
         }}
       >
         Login
@@ -249,6 +269,6 @@ export default function LoginPage() {
         Sign up
       </a>
     </div>
-    
+
   );
 }

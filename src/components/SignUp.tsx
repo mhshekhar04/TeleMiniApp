@@ -4,6 +4,7 @@ import Cloud1 from "../assets/Cloud1.svg";
 import Shadow from "../assets/shadow.svg";
 import Cloud2 from "../assets/Cloud2.svg";
 import Cloud3 from "../assets/Cloud3.svg";
+import Video from "../assets/video.mp4";
 
 export default function SignupPage() {
   const [name, setName] = useState("");
@@ -73,14 +74,32 @@ export default function SignupPage() {
             src={Cloud1}
             alt="Cloud1"
             style={{
-              width: "262.731px",
-              height: "152.418px",
+              width: "282.731px", // Adjusted the width
+              height: "172.418px",
               position: "absolute",
               top: "20px",
               left: "50%",
               transform: "translateX(-50%)",
             }}
           />
+
+           {/* Video Inside Cloud */}
+<video
+  src={Video}
+  autoPlay
+  loop
+  muted
+  style={{
+    width: "180px", // Adjust the size to fit inside the cloud
+    height: "auto",
+    position: "absolute",
+    top: "50px", // Align with the Cloud1 position
+    left: "50%",
+    transform: "translateX(-50%)",
+    zIndex: 1, // Ensure it is above other elements
+    borderRadius: "15px", // Optional: Rounded edges
+  }}
+></video>
 
           {/* Shadow */}
           <img
@@ -98,30 +117,30 @@ export default function SignupPage() {
           />
 
           {/* Cloud2 */}
-          <img
-            src={Cloud2}
-            alt="Cloud2"
-            style={{
-              width: "41.091px",
-              height: "40.468px",
-              position: "absolute",
-              top: "150px",
-              left: "20%",
-            }}
-          />
+  <img
+    src={Cloud2}
+    alt="Cloud2"
+    style={{
+      width: "41.091px",
+      height: "40.468px",
+      position: "absolute",
+      top: "170px", // Adjusted position
+      left: "20%",
+    }}
+  />
 
           {/* Cloud3 */}
-          <img
-            src={Cloud3}
-            alt="Cloud3"
-            style={{
-              width: "17.432px",
-              height: "17.432px",
-              position: "absolute",
-              top: "190px",
-              left: "17%",
-            }}
-          />
+  <img
+    src={Cloud3}
+    alt="Cloud3"
+    style={{
+      width: "17.432px",
+      height: "17.432px",
+      position: "absolute",
+      top: "200px", // Adjusted position
+      left: "17%",
+    }}
+  />
         </div>
       </div>
 

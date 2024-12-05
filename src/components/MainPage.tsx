@@ -1,12 +1,22 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 import "./MainPage.css";
 import { FaHome, FaCalendarAlt, FaCog } from "react-icons/fa";
 import { useActiveWallet } from "thirdweb/react";
 import { useActiveAccount } from "thirdweb/react";
 import { shortenAddress } from "thirdweb/utils";
+import { useLocation } from "react-router-dom";
+
+
+
+
 export default function MainPage() {
   const account = useActiveAccount();
+  const location = useLocation();
+const { solanaWallet, evmWallet } = location.state || {
+  solanaWallet: { address: "", privateKey: "" },
+  evmWallet: { address: "", privateKey: "" },
+};
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,28 +34,28 @@ export default function MainPage() {
     }
   };
 
-  const cards = [
-    {
-      title: "Virtue Balance: ",
-      balance: "$5,890.00",
-     
-    },
-    {
-      title: "Rewards Balance:",
-      balance: "$1,200.00",
-     
-    },
-    {
-      title: "Travel Funds:",
-      balance: "$3,456.00",
-     
-    },
-    {
-      title: "Shopping Credit:",
-      balance: "$8,000.00",
-    
-    },
-  ];
+
+// Update the `cards` array to include routes
+const cards = [
+  {
+    title: "Virtue Balance:",
+    balance: "$5,890.00",
+    route: "/Virtue", // Route for Virtue.js
+  },
+  {
+    title: "Rewards Balance:",
+    balance: "$1,200.00",
+    route: "/Regret", // Route for Regret.js
+  },
+  {
+    title: "Travel Funds:",
+    balance: "$3,456.00",
+  },
+  {
+    title: "Shopping Credit:",
+    balance: "$8,000.00",
+  },
+];
 
   return (
     <div className="login-page">
@@ -60,18 +70,44 @@ export default function MainPage() {
   </div>
   <button className="add-button">+</button>
 </div>
+{/* <div className="user-details">
+  <p className="user-id">Solana Address: {solanaWallet.address}</p>
+  <p className="user-id">EVM Address: {shortenAddress(evmWallet.address)}</p>
+  <p className="user-id">Solana Private Key: {solanaWallet.privateKey.slice(0, 6)}...{solanaWallet.privateKey.slice(-6)}</p>
+  <p className="user-id">EVM Private Key: {evmWallet.privateKey.slice(0, 6)}...{evmWallet.privateKey.slice(-6)}</p>
+</div> */}
 
 
-        {/* Horizontal Cards */}
-        <div className="card-container">
-          {cards.map((card, index) => (
-            <div className="card" key={index}>
-              <p className="card-title">{card.title}</p>
-              <h1 className="card-balance">{card.balance}</h1>
-              
-            </div>
-          ))}
-        </div>
+
+<div className="card-container">
+  {cards.map((card, index) => (
+    <div
+      className="card"
+      key={index}
+      style={{
+        background: [
+          "linear-gradient(102deg, #23CF8E -10.42%, #00256C 108.32%)",
+          "linear-gradient(102deg, #475569 -10.42%, #010101 108.32%)",
+          "linear-gradient(102deg, #11CBDE -10.42%, #00256C 108.32%)",
+          "linear-gradient(102deg, #75706D -10.42%, #292929 108.32%)",
+        ][index],
+        borderRadius: "20px",
+      }}
+    >
+      {index < 2 ? (
+        <Link to={card.route} className="card-link">
+          <p className="card-title">{card.title}</p>
+          <h1 className="card-balance">{card.balance}</h1>
+        </Link>
+      ) : (
+        <>
+          <p className="card-title">{card.title}</p>
+          <h1 className="card-balance">{card.balance}</h1>
+        </>
+      )}
+    </div>
+  ))}
+</div>
       </div>
 
       {/* Transactions Section */}
@@ -146,7 +182,10 @@ export default function MainPage() {
         </div>
       </div>
       <div className="footer-nav">
-  <div className="footer-item" onClick={() => navigate("/MainPage")}>
+  <div
+    className="footer-item active"
+    onClick={() => navigate("/MainPage")}
+  >
     <FaHome className="footer-item-icon" />
     <p className="footer-item-text">Home</p>
   </div>

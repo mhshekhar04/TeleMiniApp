@@ -156,13 +156,25 @@ line-height: 26px; /* 185.714% */
         border: none;
         cursor: pointer;
       }
-      
-      /* Goals Section */
       .goals-section {
         width: 90%;
         margin-top: 20px;
+        max-height: 400px; /* Adjust the height to make it scrollable */
+        overflow-y: auto; /* Enable vertical scrolling */
+        scrollbar-width: none; /* For Firefox */
+      }
+      .goals-section::-webkit-scrollbar {
+        width: 6px; /* Width of the scrollbar for Chrome, Safari */
       }
       
+      .goals-section::-webkit-scrollbar-thumb {
+        background-color: #cfcfcf; /* Color of the scrollbar thumb */
+        border-radius: 10px; /* Rounded corners for the thumb */
+      }
+      
+      .goals-section::-webkit-scrollbar-track {
+        background-color: #f5f5f5; /* Color of the scrollbar track */
+      }
       .goals-header {
         display: flex;
         justify-content: space-between;
@@ -306,8 +318,17 @@ line-height: 26px; /* 216.667% */
       .footer-item-icon {
         font-size: 24px;
       }
-      
       .footer-item.active {
-        color: #0056b3;
+        background: linear-gradient(90deg, #0DCAF0 0%, #27D07D 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
+      
+      .footer-item.active .footer-item-icon {
+        background: linear-gradient(90deg, #0DCAF0 0%, #27D07D 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      
       
