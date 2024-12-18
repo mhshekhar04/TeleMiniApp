@@ -1,117 +1,79 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { FaHome, FaCalendarAlt, FaCog } from "react-icons/fa";
-import { useActiveAccount, useActiveWallet } from "thirdweb/react";
-import { shortenAddress } from "thirdweb/utils";
 import "./Events.css";
-import taskImage from "../assets/task.svg";
+import rdmLogo from "../assets/logo.svg";
+import { FaChevronDown ,FaHome,FaClipboardList,FaCog,FaBullseye} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-export default function Events() {
-  const navigate = useNavigate();
-  const account = useActiveAccount();
-  const wallet = useActiveWallet();
+export default function GoalsPage() {
 
+  const navigate = useNavigate()
   const goals = [
-    {
-      title: "5,000 steps",
-      progress: "78%",
-      image: taskImage,
-    },
-    {
-      title: "Eat Salad Twice",
-      progress: "78%",
-      image: taskImage,
-    },
-    {
-      title: "30 minutes Walk",
-      progress: "78%",
-      image: taskImage,
-    },
-    {
-        title: "30 minutes Walk",
-        progress: "78%",
-        image: taskImage,
-      },
-      {
-        title: "30 minutes Walk",
-        progress: "78%",
-        image: taskImage,
-      },
-      {
-        title: "30 minutes Walk",
-        progress: "78%",
-        image: taskImage,
-      },
-      
+    { title: "Walk 5000 steps" },
+    { title: "Walk 5000 steps" },
+    { title: "Walk 5000 steps" },
+    { title: "Walk 5000 steps" },
   ];
 
   return (
-    <div className="events-page">
+    <div className="goals-page">
       {/* Header Section */}
-      <div className="header-section">
-        <div className="user-info">
-          <div className="user-details">
-            <p className="user-id">
-              {account ? shortenAddress(account.address) : "Connect your wallet"}
-            </p>
-            <h3 className="user-name">Ellen Halen</h3>
+      <header className="header">
+        <img src={rdmLogo} alt="RDM Logo" className="rdm-logo-left" />
+        <div className="gradient-header">
+          <div className="welcome-text">
+            <h2>Welcome, Himanshu</h2>
+            <p>US $ 25,890.00 &nbsp;&nbsp; RDM 234.98</p>
           </div>
           <button className="add-button">+</button>
         </div>
-
-        {/* Highlighted Task */}
-        <div className="highlight-card">
-          <p className="highlight-title">Your Today's task</p>
-          <p className="highlight-subtitle">almost done</p>
-          <div className="highlight-progress">
-            <p>81%</p>
-          </div>
-          <button className="view-task-button">View task</button>
-        </div>
-      </div>
-
+      </header>
 
       {/* Goals Section */}
-      <div className="goals-section">
+      <section className="goals-section">
         <div className="goals-header">
-          <h3 className="goals-title">Goals</h3>
+          <h3>Goals</h3>
           <button className="see-all-button">See All</button>
         </div>
 
-        {goals.map((goal, index) => (
-          <div className="goal-item" key={index}>
-            <div className="goal-details">
-              <img src={goal.image} alt="Goal Icon" className="goal-icon" />
-              <div className="goal-title-buttons">
-                <p className="goal-title">{goal.title}</p>
-                <div className="goal-progress">
-                  <button className="approve-button">Approve</button>
-                  <button className="reject-button">Reject</button>
-                </div>
+        <div className="goal-list">
+          {goals.map((goal, index) => (
+            <div className="goal-card" key={index}>
+              <div className="goal-icon">
+                <span role="img" aria-label="steps">
+                  🚶‍♂️
+                </span>
+              </div>
+              <div className="goal-details">
+                <p>{goal.title}</p>
+              </div>
+              <div className="goal-expand">
+                <FaChevronDown />
               </div>
             </div>
-            <div className="progress-circle">
-              <p>{goal.progress}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </section>
 
       {/* Footer Navigation */}
-      <div className="footer-nav">
+      <footer className="footer-nav">
         <div className="footer-item" onClick={() => navigate("/MainPage")}>
-          <FaHome className="footer-item-icon" />
-          <p className="footer-item-text">Home</p>
+          <FaHome size={20} />
+          <span>Home</span>
         </div>
-        <div className="footer-item active" onClick={() => navigate("/Events")}>
-          <FaCalendarAlt className="footer-item-icon" />
-          <p className="footer-item-text">Events</p>
+        <div className="footer-item active " onClick={() => navigate("/Events")}>
+          <FaBullseye size={20} />
+          <span>Goals</span>
+        </div>
+        <div className="footer-item" onClick={() => navigate("/SendTokens")}>
+          <FaClipboardList size={20} />
+          <span>History</span>
         </div>
         <div className="footer-item" onClick={() => navigate("/Settings")}>
-          <FaCog className="footer-item-icon" />
-          <p className="footer-item-text">Settings</p>
+          <FaCog size={20} />
+          <span>Settings</span>
         </div>
-      </div>
+      </footer>
+
     </div>
   );
 }

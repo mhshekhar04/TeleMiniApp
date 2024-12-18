@@ -1,115 +1,72 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { createThirdwebClient } from "thirdweb";
-import { ConnectButton } from "thirdweb/react";
-import { darkTheme } from "thirdweb/react";
-import { createWallet } from "thirdweb/wallets";
-import { FaHome, FaCalendarAlt, FaCog } from "react-icons/fa";
-import profileImage from "../assets/profile.svg";
+import { FaUserFriends, FaCalendarPlus, FaUserPlus, FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaBullseye, FaClipboardList, FaCog } from "react-icons/fa";
+import rdmLogo from "../assets/logo.svg";
 import "./Settings.css";
-import { useActiveWallet , useActiveAccount } from "thirdweb/react";
-import { shortenAddress } from "thirdweb/utils";
-import { polygon } from "thirdweb/chains";
-
-const client = createThirdwebClient({
-  clientId: "c01e9878d45ba0f45abaf91b999e034f", // Replace with your Thirdweb client ID
-});
-
-const wallets = [
-  createWallet("io.metamask"),
-  createWallet("com.coinbase.wallet"),
-  createWallet("me.rainbow"),
-  createWallet("io.rabby"),
-  createWallet("io.zerion.wallet"),
-];
 
 export default function Settings() {
   const navigate = useNavigate();
-  const wallet = useActiveWallet();
-  const account = useActiveAccount();
 
   return (
     <div className="settings-page">
-      {/* Header Section */}
-      <div className="header-section">
-        <div className="profile-section">
-          <img src={profileImage} alt="Profile" className="profile-image" />
-          <h2 className="profile-name">Ellen Halen</h2>
-          <p className="wallet-address">
-  {account ? shortenAddress(account.address) : "Connect your wallet first"}
-</p>
-      </div>
-         {/* Wallet Connect Section */}
-         <div className="connect-wallet-container">
-        <ConnectButton
-         accountAbstraction={{
-          chain: polygon,
-            sponsorGas: true
-
-
-        }}
-          client={client}
-          wallets={wallets}
-          theme={darkTheme({
-            colors: { danger: "hsl(358, 74%, 42%)" },
-          })}
-          connectModal={{
-            size: "compact",
-            showThirdwebBranding: false,
-          }}
-        />
-      </div>
-      </div>
-
-   
+     {/* Header Section */}
+     <header className="header">
+        <img src={rdmLogo} alt="RDM Logo" className="rdm-logo-left" />
+        <div className="gradient-header">
+          <div className="welcome-text">
+            <h2>Welcome, Himanshu</h2>
+            <p>US $ 25,890.00 &nbsp;&nbsp; RDM 234.98</p>
+          </div>
+          <button className="add-button">+</button>
+        </div>
+      </header>
 
       {/* Basic Settings Section */}
-      <div className="basic-settings">
+      <section className="basic-settings">
         <h3 className="settings-title">Basic Settings</h3>
+
         <div className="settings-option">
-          <FaHome className="settings-icon" />
+          <FaUserFriends className="settings-icon" />
           <p className="settings-text">Add Family & Friends</p>
         </div>
         <div className="settings-option">
-          <FaCalendarAlt className="settings-icon" />
+          <FaCalendarPlus className="settings-icon" />
           <p className="settings-text">Add Events</p>
         </div>
         <div className="settings-option">
-          <FaCog className="settings-icon" />
-          <p className="settings-text">Preferences</p>
+          <FaUserPlus className="settings-icon" />
+          <p className="settings-text">Invite Friends</p>
         </div>
-        <div className="settings-option">
-          <FaCog className="settings-icon" />
-          <p className="settings-text"
-            onClick={() => navigate("/")}>Logout</p>
-        
-        </div>
+      </section>
+
+      {/* Logout Section */}
+      <div className="logout-section">
+        <button className="logout-button" onClick={() => navigate("/")}>
+          <FaSignOutAlt size={16} />
+          Logout
+        </button>
       </div>
 
-      {/* Footer Section */}
-      <div className="footer-nav">
-        <div
-          className="footer-item"
-          onClick={() => navigate("/MainPage")}
-        >
-          <FaHome className="footer-item-icon" />
-          <p className="footer-item-text">Home</p>
+      {/* Footer Navigation */}
+      <footer className="footer-nav">
+        <div className="footer-item" onClick={() => navigate("/MainPage")}>
+          <FaHome size={20} />
+          <span>Home</span>
         </div>
-        <div
-          className="footer-item"
-          onClick={() => navigate("/Events")}
-        >
-          <FaCalendarAlt className="footer-item-icon" />
-          <p className="footer-item-text">Events</p>
+        <div className="footer-item  " onClick={() => navigate("/Events")}>
+          <FaBullseye size={20} />
+          <span>Goals</span>
         </div>
-        <div
-          className="footer-item active"
-          onClick={() => navigate("/Settings")}
-        >
-          <FaCog className="footer-item-icon" />
-          <p className="footer-item-text">Settings</p>
+        <div className="footer-item" onClick={() => navigate("/SendTokens")}>
+          <FaClipboardList size={20} />
+          <span>History</span>
         </div>
-      </div>
+        <div className="footer-item active" onClick={() => navigate("/Settings")}>
+          <FaCog size={20} />
+          <span>Settings</span>
+        </div>
+      </footer>
     </div>
   );
 }

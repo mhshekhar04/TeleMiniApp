@@ -1,205 +1,117 @@
-import React, { useState } from "react";
-import { useNavigate ,Link} from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./MainPage.css";
-import { FaHome, FaCalendarAlt, FaCog } from "react-icons/fa";
-import { useActiveWallet } from "thirdweb/react";
-import { useActiveAccount } from "thirdweb/react";
-import { shortenAddress } from "thirdweb/utils";
-import { useLocation } from "react-router-dom";
-
-
-
+import rdmLogo from "../assets/logo.svg";
+import virtueIcon from "../assets/virtue-purse.svg";
+import reserveIcon from "../assets/reserve-purse.svg";
+import rewardIcon from "../assets/reward-purse.svg";
+import remorseIcon from "../assets/remorse-purse.svg";
+import charityIcon from "../assets/charity.svg";
+import consciousIcon from "../assets/conscious-living.svg";
+import heartIcon from "../assets/heart-network.svg";
+import { FaHome, FaClipboardList,FaBullseye, FaCog } from "react-icons/fa";
 
 export default function MainPage() {
-  const account = useActiveAccount();
-  const location = useLocation();
-const { solanaWallet, evmWallet } = location.state || {
-  solanaWallet: { address: "", privateKey: "" },
-  evmWallet: { address: "", privateKey: "" },
-};
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
   const navigate = useNavigate();
-  const wallet = useActiveWallet();
+  const [activeFocus, setActiveFocus] = React.useState(null);
 
-  const validateLogin = () => {
-    if (email === "test@gmail.com" && password === "test") {
-      setError(""); // Clear the error message on successful login
-      navigate("/MainPage"); // Redirect to MainPage
-    } else {
-      setError("Invalid email or password!"); // Set error message
-    }
-  };
+  const purses = [
+    { title: "Virtue Purse", balance: "RDM 234.87", icon: virtueIcon },
+    { title: "Reserve Purse", balance: "RDM 23.87", icon: reserveIcon },
+    { title: "Reward Purse", balance: "RDM 78.87", icon: rewardIcon },
+    { title: "Remorse Purse", balance: "RDM 364.87", icon: remorseIcon },
+  ];
 
+  const focusItems = [
+    { title: "Trickle Charity", icon: charityIcon },
+    { title: "Conscious Living", icon: consciousIcon },
+    { title: "Heart Network", icon: heartIcon },
+  ];
 
-// Update the `cards` array to include routes
-const cards = [
-  {
-    title: "Virtue Balance:",
-    balance: "$5,890.00",
-    route: "/Virtue", // Route for Virtue.js
-  },
-  {
-    title: "Rewards Balance:",
-    balance: "$1,200.00",
-    route: "/Regret", // Route for Regret.js
-  },
-  {
-    title: "Travel Funds:",
-    balance: "$3,456.00",
-  },
-  {
-    title: "Shopping Credit:",
-    balance: "$8,000.00",
-  },
-];
+  const transactions = [
+    { title: "Walk 5000 steps", date: "17th February, 2023", amount: "₹39.00", status: "Not completed" },
+  ];
 
   return (
-    <div className="login-page">
-      {/* Header Section */}
-      <div className="header-section">
-      <div className="user-info">
-  <div className="user-details">
-<p className="user-id">
-  {account?.address ? shortenAddress(account.address) : "Connect your wallet"}
-</p>  
-  <h3 className="user-name">Ellen Halen</h3>
-  </div>
-  <button className="add-button">+</button>
-</div>
-{/* <div className="user-details">
-  <p className="user-id">Solana Address: {solanaWallet.address}</p>
-  <p className="user-id">EVM Address: {shortenAddress(evmWallet.address)}</p>
-  <p className="user-id">Solana Private Key: {solanaWallet.privateKey.slice(0, 6)}...{solanaWallet.privateKey.slice(-6)}</p>
-  <p className="user-id">EVM Private Key: {evmWallet.privateKey.slice(0, 6)}...{evmWallet.privateKey.slice(-6)}</p>
-</div> */}
-
-
-
-<div className="card-container">
-  {cards.map((card, index) => (
-    <div
-      className="card"
-      key={index}
-      style={{
-        background: [
-          "linear-gradient(102deg, #23CF8E -10.42%, #00256C 108.32%)",
-          "linear-gradient(102deg, #475569 -10.42%, #010101 108.32%)",
-          "linear-gradient(102deg, #11CBDE -10.42%, #00256C 108.32%)",
-          "linear-gradient(102deg, #75706D -10.42%, #292929 108.32%)",
-        ][index],
-        borderRadius: "20px",
-      }}
-    >
-      {index < 2 ? (
-        <Link to={card.route} className="card-link">
-          <p className="card-title">{card.title}</p>
-          <h1 className="card-balance">{card.balance}</h1>
-        </Link>
-      ) : (
-        <>
-          <p className="card-title">{card.title}</p>
-          <h1 className="card-balance">{card.balance}</h1>
-        </>
-      )}
+    <div className="main-page">
+     <header className="header">
+  <img src={rdmLogo} alt="RDM Logo" className="rdm-logo-left" />
+  <div className="gradient-header">
+    <div className="welcome-text">
+      <h2>Welcome, Himanshu</h2>
+      <p>US $ 25,890.00 &nbsp;&nbsp; RDM 234.98</p>
     </div>
-  ))}
-</div>
-      </div>
+    <button className="add-button">+</button>
+  </div>
+</header>
+
+
+      {/* Balance Section */}
+      <section className="balance-section">
+        <h3>Your Balance</h3>
+        <div className="purse-container">
+          {purses.map((purse, index) => (
+            <div className="purse-card" key={index}>
+              <img src={purse.icon} alt={purse.title} />
+              <h4>{purse.title}</h4>
+              <p>{purse.balance}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Focus Section */}
+      <section className="focus-section">
+        <h3>My Focus</h3>
+        <div className="focus-container">
+
+{focusItems.map((item, index) => (
+  <div
+    className={`focus-item ${activeFocus === index ? "active" : ""}`}
+    key={index}
+    onClick={() => setActiveFocus(index)} 
+  >
+    <img src={item.icon} alt={item.title} />
+    <p>{item.title}</p>
+  </div>
+))}
+
+        </div>
+      </section>
 
       {/* Transactions Section */}
-      <div className="transactions-section">
-        <div className="transactions-header">
-          <h3 className="transactions-title">Recent Transactions</h3>
-          <button className="see-all-button">See All</button>
-        </div>
+      <section className="transactions-section">
+        <h3>Recent Transactions</h3>
+        {transactions.map((tx, index) => (
+          <div className="transaction-card" key={index}>
+            <div className="transaction-details">
+              <p>{tx.title}</p>
+              <span>{tx.date}</span>
+            </div>
+            <p className="transaction-amount">{tx.amount}</p>
+          </div>
+        ))}
+      </section>
 
-        {/* Transactions List */}
-        <div className="transaction-item">
-          <div className="transaction-details">
-            <span className="transaction-icon">🚶‍♂️</span>
-            <div>
-              <p className="transaction-title">Walk not completed</p>
-              <p className="transaction-date">Dec 15, 2023</p>
-            </div>
-          </div>
-          <p className="transaction-amount negative">- £199</p>
+       {/* Footer Navigation */}
+       <footer className="footer-nav">
+        <div className="footer-item active" onClick={() => navigate("/MainPage")}>
+          <FaHome size={20} />
+          <span>Home</span>
         </div>
-
-        <div className="transaction-item">
-          <div className="transaction-details">
-            <span className="transaction-icon">🍔</span>
-            <div>
-              <p className="transaction-title">Eated Burger</p>
-              <p className="transaction-date">Jan 01, 2023</p>
-            </div>
-          </div>
-          <p className="transaction-amount negative">- £649</p>
+        <div className="footer-item  " onClick={() => navigate("/Events")}>
+          <FaBullseye size={20} />
+          <span>Goals</span>
         </div>
-        <div className="transaction-item">
-          <div className="transaction-details">
-            <span className="transaction-icon">🍔</span>
-            <div>
-              <p className="transaction-title">Eated Burger</p>
-              <p className="transaction-date">Jan 01, 2023</p>
-            </div>
-          </div>
-          <p className="transaction-amount negative">- £649</p>
+        <div className="footer-item" onClick={() => navigate("/SendTokens")}>
+          <FaClipboardList size={20} />
+          <span>History</span>
         </div>
-        <div className="transaction-item">
-          <div className="transaction-details">
-            <span className="transaction-icon">🍔</span>
-            <div>
-              <p className="transaction-title">Eated Burger</p>
-              <p className="transaction-date">Jan 01, 2023</p>
-            </div>
-          </div>
-          <p className="transaction-amount negative">- £649</p>
+        <div className="footer-item" onClick={() => navigate("/Settings")}>
+          <FaCog size={20} />
+          <span>Settings</span>
         </div>
-        <div className="transaction-item">
-          <div className="transaction-details">
-            <span className="transaction-icon">🍔</span>
-            <div>
-              <p className="transaction-title">Eated Burger</p>
-              <p className="transaction-date">Jan 01, 2023</p>
-            </div>
-          </div>
-          <p className="transaction-amount negative">- £649</p>
-        </div>
-
-        <div className="transaction-item">
-          <div className="transaction-details">
-            <span className="transaction-icon">🏋️‍♂️</span>
-            <div>
-              <p className="transaction-title">Gym for 2 hours</p>
-              <p className="transaction-date">Feb 12, 2024</p>
-            </div>
-          </div>
-          <p className="transaction-amount positive">+ £1445.90</p>
-        </div>
-      </div>
-      <div className="footer-nav">
-  <div
-    className="footer-item active"
-    onClick={() => navigate("/MainPage")}
-  >
-    <FaHome className="footer-item-icon" />
-    <p className="footer-item-text">Home</p>
-  </div>
-  <div className="footer-item" onClick={() => navigate("/Events")}>
-    <FaCalendarAlt className="footer-item-icon" />
-    <p className="footer-item-text">Events</p>
-  </div>
-  <div className="footer-item" onClick={() => navigate("/Settings")}>
-    <FaCog className="footer-item-icon" />
-    <p className="footer-item-text">Settings</p>
-  </div>
-</div>
-
-
+      </footer>
     </div>
   );
 }

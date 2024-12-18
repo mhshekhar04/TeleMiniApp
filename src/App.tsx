@@ -9,6 +9,7 @@ import Verification from "./components/Verification";
 import { Buffer } from "buffer";
 import Virtue from "./components/Virtue";
 import Regret from "./components/Regret";
+import SendTokens from "./components/SendTokens";
 
 // Polyfill Buffer for browser
 if (!window.Buffer) {
@@ -27,6 +28,8 @@ function App() {
         <Route path="/Verification" element={<Verification/>} />
         <Route path="/Regret" element={<Regret/>} />
         <Route path="/Virtue" element={<Virtue/>} />
+        <Route path="/SendTokens" element={<SendTokens/>} />
+
 
 
                                                          

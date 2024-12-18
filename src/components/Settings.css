@@ -1,146 +1,182 @@
-/* Reset CSS */
-* {
+/* General Styling */
+body,
+html {
   margin: 0;
   padding: 0;
+  font-family: "Manrope", Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  margin-left: 5px;
+}
+
+.goals-page {
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
 }
 
-/* General Styles */
-body {
-  font-family: "Inter", sans-serif;
-  background: #f4f4f4;
-  color: #333;
-}
-
-.settings-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  min-height: 100vh;
-}
-
 /* Header Section */
-.header-section {
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(269deg, #0dcaf0 32.86%, #27d07d 85.61%);
-  border-radius: 0 0 70px 70px;
+.header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  position: relative;
 }
 
-.profile-section {
-  text-align: center;
-  color: #fff;
+.rdm-logo-left {
+  height: 39px;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-left: 10px;
 }
 
-.profile-image {
-  width: 100px;
-  height: 100px;
+.gradient-header {
+  background: linear-gradient(102deg, #23cf8e 0%, #00a8f4 100%);
+  padding: 2.8rem;
+  border-radius: 0 0 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70%;
+  box-sizing: border-box;
+}
+
+.welcome-text h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.welcome-text p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.add-button {
+  background: #fff;
+  color: #00a8f4;
+  border: none;
+  font-size: 1.5rem;
   border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.profile-name {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.wallet-status {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-/* Connect Wallet Section */
-.connect-wallet-container {
-  margin: 20px;
-  text-align: center;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Basic Settings Section */
 .basic-settings {
   width: 90%;
-  margin-top: 20px;
+  margin-top: 100px;
 }
 
 .settings-title {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  margin-left: 15px;
+
 }
 
 .settings-option {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border: 1px solid #cfcfcf;
-  border-radius: 10px;
+  padding: 12px 15px;
+  background: #fff;
+  border-radius: 12px;
   margin-bottom: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.settings-option:hover {
-  background: #f0f0f0;
-  transform: scale(1.02);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-left: 15px;
 }
 
 .settings-icon {
   font-size: 20px;
-  margin-right: 10px;
   color: #474f62;
+  margin-right: 10px;
 }
 
 .settings-text {
   font-size: 14px;
   font-weight: 500;
+  color: #333;
+  flex: 1;
 }
+
+/* Logout Section */
+.logout-section {
+  margin: 2rem 0;
+  width: 90%;
+  margin-top: 350px;
+  margin-left: 15px;
+}
+
+.logout-button {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(102deg, #23cf8e, #00a8f4);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
 
 /* Footer Navigation */
 .footer-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 70px;
-  background: #f5f5f5;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 60px 60px 0 0;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 1rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .footer-item {
-  text-align: center;
-  color: #474f62;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+  font-size: 0.8rem;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
+
 .footer-item.active {
-  color: #0056b3; /* Blue color for both text and icon */
+  background: linear-gradient(269deg, #0DCAF0 32.86%, #27D07D 85.61%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
-.footer-item.active .footer-item-icon {
-  color: #0056b3; /* Ensures the icon is blue */
+
+.footer-item p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.footer-item svg {
+  margin-bottom: 0.3rem;
+  color: inherit;
+}
+
+.footer-item span {
+  font-size: 0.8rem;
+  color: inherit;
 }
 
 
-.footer-item.active,
-.footer-item:hover {
-  color: #0056b3;
-}
-
-.footer-item-icon {
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-.footer-item-text {
-  font-size: 12px;
-  font-weight: 500;
-}
