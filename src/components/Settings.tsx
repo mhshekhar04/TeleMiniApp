@@ -12,15 +12,21 @@ export default function Settings() {
     <div className="settings-page">
      {/* Header Section */}
      <header className="header">
-        <img src={rdmLogo} alt="RDM Logo" className="rdm-logo-left" />
-        <div className="gradient-header">
-          <div className="welcome-text">
-            <h2>Welcome, Himanshu</h2>
-            <p>US $ 25,890.00 &nbsp;&nbsp; RDM 234.98</p>
-          </div>
-          <button className="add-button">+</button>
-        </div>
-      </header>
+  <img src={rdmLogo} alt="RDM Logo" className="rdm-logo-left" />
+  <div className="gradient-header">
+  <div className="header-search-bar">
+    <input type="text" placeholder="Search" className="search-input" />
+  </div>
+  <div className="header-content">
+    <div className="welcome-text">
+      <h2>Welcome, Himanshu</h2>
+      <p>US $ 25,890.00 &nbsp;&nbsp; RDM 234.98</p>
+    </div>
+    <button className="add-button">+</button>
+  </div>
+</div>
+
+</header>
 
       {/* Basic Settings Section */}
       <section className="basic-settings">

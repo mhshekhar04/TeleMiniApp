@@ -31,7 +31,7 @@ html {
 
 .gradient-header {
   background: linear-gradient(102deg, #23cf8e 0%, #00a8f4 100%);
-  padding: 2.8rem;
+  padding: 1.5rem;
   border-radius: 0 0 0 20px;
   display: flex;
   justify-content: space-between;
@@ -48,9 +48,24 @@ html {
   margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
+  color: #FFF;
+  font-family: "Manrope";
+font-size: 19px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -0.76px;
 }
 
 .welcome-text p {
+  color: #FFF;
+text-align: center;
+font-family: "Manrope";
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -0.64px;
   margin: 0;
   font-size: 0.9rem;
 }

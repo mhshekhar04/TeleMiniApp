@@ -8,6 +8,9 @@ html {
   color: #333;
 }
 
+
+
+
 .send-tokens-page {
   display: flex;
   flex-direction: column;
@@ -30,7 +33,7 @@ html {
 
 .gradient-header {
   background: linear-gradient(102deg, #23cf8e 0%, #00a8f4 100%);
-  padding: 2.8rem;
+  padding: 1.5rem;
   border-radius: 0 0 0 20px;
   display: flex;
   justify-content: space-between;
@@ -45,13 +48,17 @@ html {
 
 .welcome-text h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
+  font-family:monospace;
+
 }
 
 .welcome-text p {
   margin: 0;
   font-size: 0.9rem;
+  font-family:fantasy;
+
 }
 
 .add-button {

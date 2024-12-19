@@ -30,7 +30,7 @@ html {
 
 .gradient-header {
   background: linear-gradient(102deg, #23cf8e 0%, #00a8f4 100%);
-  padding: 2.8rem;
+  padding: 1.8rem;
   border-radius: 0 0 0 20px;
   display: flex;
   justify-content: space-between;
@@ -47,11 +47,15 @@ html {
   margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
+  font-family: Manrope;
+
 }
 
 .welcome-text p {
   margin: 0;
   font-size: 0.9rem;
+  font-family: "Manrope";
+
 }
 
 .add-button {
@@ -101,36 +105,65 @@ html {
 
 .goal-card {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Ensure the elements stack vertically */
+  align-items: flex-start; /* Align items to the left */
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-background: linear-gradient(269deg, rgba(13, 202, 240, 0.11) 32.86%, rgba(39, 208, 125, 0.11) 85.61%), #FFF;
+  background: linear-gradient(269deg, rgba(13, 202, 240, 0.11) 32.86%, rgba(39, 208, 125, 0.11) 85.61%), #FFF;
 }
 
 .goal-icon {
-  background: #EFEFEF;;
+  background: #efefef;
   border-radius: 8px;
   padding: 0.5rem;
-  margin-right: 1rem;
+}
+
+.goal-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .goal-details p {
   margin: 0;
-
-  color: #0A1931;
-font-family: Inter;
-font-size: 14px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-letter-spacing: -0.28px;
+  color: #0a1931;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.28px;
 }
 
 .goal-expand {
-  margin-left: auto;
+  margin-left: 10px;
   color: #777;
+  cursor: pointer;
 }
+
+.expanded-sections {
+  display: flex;
+  justify-content: space-between; /* Distribute buttons evenly */
+  width: 100%; /* Take full width of the card */
+  margin-top: 0.5rem;
+  padding-top: 0.5rem; /* Add space between sections and text */
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Optional separator */
+}
+
+.expanded-section {
+  flex: 1; /* Make sections take equal space */
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0 0.5rem; /* Add space between sections */
+  border-radius: 8px;
+  background: #474f62;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 
 /* Footer Navigation */
 .footer-nav {
